@@ -79,5 +79,10 @@ jobs:
            send "123456\r"
            expect eof
            '
+    - name: Set GitHub Config
+      run: |
+           git config --global user.name "Batu33TR"
+           git config --global user.email "batuhanarslanoglu4@gmail.com"
+           git config --global credential.helper 'cache --timeout 3600'
     - name: Create SSH Access
       uses: mxschmitt/action-tmate@v3
