@@ -101,9 +101,17 @@ jobs:
             TCPKeepAlive yes
             IdentitiesOnly yes
         EOF
-    - name: Setup ZSH Shell
+    - name: Install ZSH Shell
       run: |
            sudo apt install zsh
+    - name: Set ZSH to Default Shell
+      run: |
+           chsh -s /usr/bin/zsh
+           expect -c '
+           expect "Password: "
+           send "${{ secrets.SSH_PASSWORD }}\r"
+           expect eof
+           '
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
