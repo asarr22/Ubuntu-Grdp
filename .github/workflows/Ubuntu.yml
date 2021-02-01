@@ -98,15 +98,13 @@ jobs:
             TCPKeepAlive yes
             IdentitiesOnly yes
         EOF
-    - name: Set User's Password
-      run: |
-           echo 'runner:123456' | sudo chpasswd
     - name: Install ZSH Shell
       run: |
            sudo apt install zsh
     - name: Set ZSH to Default Shell
       run: |
            sudo chsh -s /usr/bin/zsh runner
+           sudo chsh -s /usr/bin/zsh root
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
