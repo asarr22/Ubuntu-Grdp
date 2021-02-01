@@ -106,12 +106,7 @@ jobs:
            sudo apt install zsh
     - name: Set ZSH to Default Shell
       run: |
-           chsh -s /usr/bin/zsh
-           expect -c '
-           expect "Password: "
-           send "123456\r"
-           expect eof
-           '
+           sudo chsh -s /usr/bin/zsh runner
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
