@@ -1,6 +1,15 @@
 # Ubuntu-Grdp
+## Set SSH Tunnel:
 
-Steps: 
+1. Fork This Repo
+
+2. Add your ngrok authtoken as `NGROK_TOKEN` in the Repository Secrets
+
+   > You can find this token here: https://dashboard.ngrok.com/auth/your-authtoken
+
+3. Add a shell login password as `SSH_PASSWORD` in the Repository Secrets
+
+## Set Remote Desktop:
 
 1. Visit here https://remotedesktop.google.com/headless
 
