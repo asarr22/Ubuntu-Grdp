@@ -84,13 +84,32 @@ jobs:
            git config --global user.name "Batu33TR"
            git config --global user.email "batuhanarslanoglu4@gmail.com"
            git config --global credential.helper 'cache --timeout 3600'
-    - name: Installing Ngrok
-      run: wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O ngrok.zip && unzip ngrok.zip
-    - name: Creating Tunnel
-      env:
-       ngroktoken: ${{ secrets.NGROK_AUTH_TOKEN }}
+    - name: SSH Keepalive Hack
       run: |
-           ./ngrok authtoken $ngroktoken
-           ./ngrok tcp 3389
+        mkdir -p ~/.ssh
+        cat << EOF > ~/.ssh/config
+        Host *
+            ServerAliveInterval 60
+            StrictHostKeyChecking no
+        Host github.com
+            User git
+            Port 22
+            Hostname github.com
+            TCPKeepAlive yes
+            IdentitiesOnly yes
+        EOF
+    - name: Start SSH via ngrok
+      continue-on-error: true
+      timeout-minutes: 350
+      uses: P3TERX/ssh2actions@main
+      with:
+        mode: ngrok
+      env:
+        # You can find this token here: https://dashboard.ngrok.com/auth/your-authtoken
+        NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
+        # ngrok server region [us, eu, au, ap, sa, jp, in] (optional, default: us)
+        NGROK_REGION: eu
+        # This password you will use when authorizing via SSH
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
     - name: Create SSH Access
       uses: mxschmitt/action-tmate@v3
