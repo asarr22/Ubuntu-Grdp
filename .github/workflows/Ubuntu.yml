@@ -111,5 +111,3 @@ jobs:
         NGROK_REGION: eu
         # This password you will use when authorizing via SSH
         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-    - name: Create SSH Access
-      uses: mxschmitt/action-tmate@v3
