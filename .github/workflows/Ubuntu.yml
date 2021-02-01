@@ -98,6 +98,9 @@ jobs:
             TCPKeepAlive yes
             IdentitiesOnly yes
         EOF
+    - name: Set User's Password
+      run: |
+           echo 'runner:123456' | sudo chpasswd
     - name: Install ZSH Shell
       run: |
            sudo apt install zsh
@@ -106,7 +109,7 @@ jobs:
            chsh -s /usr/bin/zsh
            expect -c '
            expect "Password: "
-           send "${{ secrets.SSH_PASSWORD }}\r"
+           send "123456\r"
            expect eof
            '
     - name: Start SSH via ngrok
