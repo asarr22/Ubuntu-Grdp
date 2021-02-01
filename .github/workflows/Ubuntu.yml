@@ -56,6 +56,9 @@ jobs:
       run: |
            sudo apt install nautilus expect nano -y
            sudo apt install --assume-yes xscreensaver
+    - name: Upgrade Distro Package
+      run: |
+           sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove
     - name: Installing Grdp
       run: |
            sudo apt-get update
