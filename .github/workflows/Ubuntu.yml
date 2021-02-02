@@ -108,12 +108,12 @@ jobs:
     - name: Install Oh My ZSH
       run: |
            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-     - name: Install Oh My ZSH Theme
-       run: |
-            git clone https://github.com/OscarAkaElvis/zsh-parrot-theme
-            cd zsh-parrot-theme/
-            chmod 755 install.zsh
-            ./install.zsh
+    - name: Install Oh My ZSH Theme
+      run: |
+           git clone https://github.com/OscarAkaElvis/zsh-parrot-theme
+           cd zsh-parrot-theme/
+           chmod 755 install.zsh
+           ./install.zsh
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
