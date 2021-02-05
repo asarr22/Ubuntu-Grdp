@@ -55,6 +55,7 @@ jobs:
       run: |
            sudo apt install nautilus expect nano -y
            sudo apt install --assume-yes xscreensaver
+	   sudo apt install -y ccache
     - name: Installing Grdp
       run: |
            sudo apt-get update
@@ -97,22 +98,20 @@ jobs:
             TCPKeepAlive yes
             IdentitiesOnly yes
         EOF
-    - name: Install ZSH Shell
+    - name: Install and Configure ZSH & Tmux-Byobu
       run: |
            sudo apt install zsh
-    - name: Set ZSH to Default Shell
-      run: |
            sudo chsh -s /usr/bin/zsh runner
-           sudo chsh -s /usr/bin/zsh root
-    - name: Install Oh My ZSH
-      run: |
            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    - name: Install Oh My ZSH Theme
-      run: |
            git clone https://github.com/OscarAkaElvis/zsh-parrot-theme
            cd zsh-parrot-theme/
            chmod 755 install.zsh
            ./install.zsh
+           sudo chsh -s /bin/bash runner
+	   byobu-enable
+	   echo "set -g default-shell /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
+	   echo "set -g default-command /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
+	   echo "export USE_CCACHE=1 && export CCACHE_EXEC=/usr/bin/ccache && ccache -M 20G" >> $HOME/.oh-my-zsh/oh-my-zsh.sh
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
