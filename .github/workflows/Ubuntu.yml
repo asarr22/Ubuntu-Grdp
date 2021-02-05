@@ -5,7 +5,6 @@ on:
      auth:
         description: 'GRDP Authorization Code'
         required: true
-        default: 'paste your code here'
   
 defaults:
   run:
@@ -45,8 +44,8 @@ jobs:
       # sudo apt update && sudo apt install xfce4 && sudo chmod 777 /home/Area69Lab/
       # sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
 
-    - name: Installing Desktop Environment (wait for 10 min)
-      run: sudo apt update && sudo add-apt-repository ppa:ubuntudde-dev/stable -y && sudo apt install ubuntudde-dde && sudo apt install ubuntudde-dde-extras && sudo apt --fix-broken install
+    - name: Installing Desktop Environment (wait for 4-5 min)
+      run: sudo add-apt-repository ppa:ubuntukylin-members/ukui -y && sudo apt update && sudo apt install ukui-desktop-environment && sudo apt --fix-broken install
     - name: Installing Google Chrome Headless
       run: |
            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
