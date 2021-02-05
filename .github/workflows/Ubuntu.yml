@@ -55,7 +55,7 @@ jobs:
       run: |
            sudo apt install nautilus expect nano -y
            sudo apt install --assume-yes xscreensaver
-	   sudo apt install -y ccache
+	   sudo apt install ccache -y
     - name: Installing Grdp
       run: |
            sudo apt-get update
