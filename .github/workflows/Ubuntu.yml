@@ -108,10 +108,10 @@ jobs:
            chmod 755 install.zsh
            ./install.zsh
            sudo chsh -s /bin/bash runner
-	   byobu-enable
-	   echo "set -g default-shell /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
-	   echo "set -g default-command /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
-	   echo "export USE_CCACHE=1 && export CCACHE_EXEC=/usr/bin/ccache && ccache -M 20G" >> $HOME/.oh-my-zsh/oh-my-zsh.sh
+           byobu-enable
+           echo "set -g default-shell /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
+           echo "set -g default-command /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
+           echo "export USE_CCACHE=1 && export CCACHE_EXEC=/usr/bin/ccache && ccache -M 20G" >> $HOME/.oh-my-zsh/oh-my-zsh.sh
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
