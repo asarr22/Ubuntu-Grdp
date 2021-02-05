@@ -44,8 +44,8 @@ jobs:
       # sudo apt update && sudo apt install xfce4 && sudo chmod 777 /home/Area69Lab/
       # sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
 
-    - name: Installing Desktop Environment (wait for 8 min)
-      run: sudo apt update && sudo apt install ubuntu-budgie-desktop -y && sudo apt --fix-broken install
+    - name: Installing Desktop Environment (wait for 6-7 min)
+      run: sudo apt update && sudo apt install ubuntu-desktop
     - name: Installing Google Chrome Headless
       run: |
            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
