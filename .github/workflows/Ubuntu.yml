@@ -45,7 +45,7 @@ jobs:
       # sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
 
     - name: Installing Desktop Environment (wait for 6-7 min)
-      run: sudo apt update && sudo apt install lightdm -y && sudo apt install ubuntu-budgie-desktop -y
+      run: sudo apt update && sudo apt install tasksel && sudo tasksel install kubuntu-desktop
     - name: Installing Google Chrome Headless
       run: |
            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
