@@ -1,13 +1,17 @@
 # Ubuntu-Grdp
+## Set GitHub Config
+
+1. Edit `GitHubMail` and `GitHubMail` in .github/workflows/Ubuntu.yml
+
+2. Add a personal access token from https://github.com/settings/tokens and add as `GH_TOKEN` in repo secrets
+
 ## Set SSH Tunnel:
 
-1. Fork This Repo
-
-2. Add your ngrok authtoken as `NGROK_TOKEN` in the Repository Secrets
+1. Add your ngrok authtoken as `NGROK_TOKEN` in the Repository Secrets
 
    > You can find this token here: https://dashboard.ngrok.com/auth/your-authtoken
 
-3. Add a shell login password as `SSH_PASSWORD` in the Repository Secrets
+2. Add a shell login password as `SSH_PASSWORD` in the Repository Secrets
 
 ## Set Remote Desktop:
 
