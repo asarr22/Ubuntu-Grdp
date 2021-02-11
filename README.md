@@ -1,7 +1,7 @@
 # Ubuntu-Grdp
 ## Set GitHub Config
 
-1. Edit `GitHubMail` and `GitHubMail` in .github/workflows/Ubuntu.yml
+1. Edit `GitHubMail` and `GitHubName` in .github/workflows/Ubuntu.yml
 
 2. Add a personal access token from https://github.com/settings/tokens and add as `GH_TOKEN` in repo secrets
 
