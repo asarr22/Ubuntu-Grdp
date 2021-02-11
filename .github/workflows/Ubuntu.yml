@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-20.04
     
     env:
-    # Change These If You Are Forking The Repo
-    GitHubMail: "batuhanarslanoglu4@gmail.com"
-    GitHubName: "Batu33TR"
+      # Change These If You Are Forking The Repo
+      GitHubMail: "batuhanarslanoglu4@gmail.com"
+      GitHubName: "Batu33TR"
       
     steps:
     - name: Creating User to Login
@@ -87,11 +87,11 @@ jobs:
            '
     - name: Set Git Configs & Secrets
       run: |
-        git config --global user.email ${GitHubMail}
-        git config --global user.name ${GitHubName}
-        git config --global color.ui true
-        git config --global credential.helper store
-        echo "https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+           git config --global user.email ${GitHubMail}
+           git config --global user.name ${GitHubName}
+           git config --global color.ui true
+           git config --global credential.helper store
+           echo "https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
     - name: SSH Keepalive Hack
       run: |
         mkdir -p ~/.ssh
