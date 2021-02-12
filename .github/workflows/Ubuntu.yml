@@ -21,8 +21,11 @@ jobs:
     steps:
     - name: Creating User to Login
       run: |
-         sudo useradd -m Area69Lab && sudo adduser Area69Lab sudo && echo 'Area69Lab:Area69Lab' | sudo chpasswd
-     
+         sudo useradd -m Batu33TR && sudo adduser Batu33TR sudo && echo 'Batu33TR:Batu33TR' | sudo chpasswd
+    - name: Rename VM Hostname
+      run: |
+         sudo hostname MicrosoftAzure
+         sudo echo "MicrosoftAzure" > /etc/hostname
       # To Install different Environment replace their commands. by default it Install 'Ubuntu'
       
       # Ubuntu default will take upto 6-7 min
