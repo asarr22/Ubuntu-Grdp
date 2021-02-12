@@ -123,7 +123,7 @@ jobs:
            echo "set -g default-command /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
     - name: Clean VM
-    - uses: rokibhasansagar/slimhub_actions@main
+      uses: rokibhasansagar/slimhub_actions@main
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
