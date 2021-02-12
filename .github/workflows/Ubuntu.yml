@@ -25,7 +25,6 @@ jobs:
     - name: Rename VM Hostname
       run: |
          sudo hostname MicrosoftAzure
-         sudo echo "MicrosoftAzure" > /etc/hostname
       # To Install different Environment replace their commands. by default it Install 'Ubuntu'
       
       # Ubuntu default will take upto 6-7 min
