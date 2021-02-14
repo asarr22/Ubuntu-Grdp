@@ -71,7 +71,7 @@ jobs:
            wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
            sudo dpkg --install chrome-remote-desktop_current_amd64.deb
            sudo apt install --assume-yes --fix-broken
-           sudo adduser Area69Lab chrome-remote-desktop
+           sudo adduser Batu33TR chrome-remote-desktop
     - name: generate script
       run: |
            touch setup.sh
