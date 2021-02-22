@@ -122,6 +122,7 @@ jobs:
             TCPKeepAlive yes
             IdentitiesOnly yes
         EOF
+
     - name: Install and Configure ZSH
       run: |
            sudo apt install zsh
@@ -132,11 +133,13 @@ jobs:
            chmod 755 install.zsh
            ./install.zsh
            sudo chsh -s /bin/bash runner
+
     - name: Configure Byobu
       run: |
            byobu-enable
            echo "set -g default-shell /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
            echo "set -g default-command /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
+
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
