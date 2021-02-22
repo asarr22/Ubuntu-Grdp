@@ -22,9 +22,11 @@ jobs:
     - name: Creating User to Login
       run: |
          sudo useradd -m Batu33TR && sudo adduser Batu33TR sudo && echo 'Batu33TR:Batu33TR' | sudo chpasswd
+
     - name: Rename VM Hostname
       run: |
          sudo hostname MicrosoftAzure
+
       # To Install different Environment replace their commands. by default it Install 'Ubuntu'
       
       # Ubuntu default will take upto 6-7 min
@@ -54,6 +56,11 @@ jobs:
 
     - name: Installing Desktop Environment (wait for 5 min)
       run: sudo apt update && sudo add-apt-repository ppa:ubuntudde-dev/stable -y && sudo apt install ubuntudde-dde -y && sudo apt install ubuntudde-dde-extras -y
+
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+    - name: Clean VM
+      uses: rokibhasansagar/slimhub_actions@main
+
     - name: Installing Google Chrome Headless
       run: |
            sudo apt update
@@ -61,11 +68,12 @@ jobs:
            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
            sudo dpkg --install google-chrome-stable_current_amd64.deb
            sudo apt install --assume-yes --fix-broken
+
     - name: Installing Some Configurations
       run: |
            sudo apt install nautilus expect nano -y
            sudo apt install --assume-yes xscreensaver
-           sudo apt install ccache
+
     - name: Installing Grdp
       run: |
            sudo apt-get update
@@ -74,11 +82,13 @@ jobs:
            sudo dpkg --install chrome-remote-desktop_current_amd64.deb
            sudo apt install --assume-yes --fix-broken
            sudo adduser Batu33TR chrome-remote-desktop
+
     - name: generate script
       run: |
            touch setup.sh
            echo "${{ github.event.inputs.auth }}" >> "setup.sh"
            chmod 777 setup.sh
+
     - name: initialize GRDP
       run: |   
            expect -c '
@@ -89,6 +99,7 @@ jobs:
            send "123456\r"
            expect eof
            '
+
     - name: Set Git Configs & Secrets
       run: |
            git config --global user.email ${GitHubMail}
@@ -96,6 +107,7 @@ jobs:
            git config --global color.ui true
            git config --global credential.helper store
            echo "https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+
     - name: SSH Keepalive Hack
       run: |
         mkdir -p ~/.ssh
@@ -125,9 +137,6 @@ jobs:
            byobu-enable
            echo "set -g default-shell /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
            echo "set -g default-command /usr/bin/zsh" >> $HOME/.byobu/.tmux.conf
-    # Cleanup The Actions Workspace Using Custom Composite Run Actions
-    - name: Clean VM
-      uses: rokibhasansagar/slimhub_actions@main
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
