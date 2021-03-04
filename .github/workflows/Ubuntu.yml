@@ -15,13 +15,13 @@ jobs:
     
     env:
       # Change These If You Are Forking The Repo
-      GitHubMail: "msarr3334@gmail.com"
+      GitHubMail: "msarr3334@gmail.com"      
       GitHubName: "asarr22"
       
     steps:
     - name: Creating User to Login
       run: |
-         sudo useradd -m asarr22 && sudo adduser asarr22 sudo && echo 'asarr22:asarr22' | sudo chpasswd
+         sudo useradd -m Batu33TR && sudo adduser Batu33TR sudo && echo 'Batu33TR:Batu33TR' | sudo chpasswd
 
     - name: Rename VM Hostname
       run: |
@@ -84,7 +84,7 @@ jobs:
            wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
            sudo dpkg --install chrome-remote-desktop_current_amd64.deb
            sudo apt install --assume-yes --fix-broken
-           sudo adduser asarr22 chrome-remote-desktop
+           sudo adduser Batu33TR chrome-remote-desktop
 
     - name: generate script
       run: |
