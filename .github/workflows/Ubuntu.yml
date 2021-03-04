@@ -21,7 +21,7 @@ jobs:
     steps:
     - name: Creating User to Login
       run: |
-         sudo useradd -m Batu33TR && sudo adduser Batu33TR sudo && echo 'Batu33TR:Batu33TR' | sudo chpasswd
+         sudo useradd -m asarr22 && sudo adduser asarr22 sudo && echo 'asarr22:asarr22' | sudo chpasswd
 
     - name: Rename VM Hostname
       run: |
