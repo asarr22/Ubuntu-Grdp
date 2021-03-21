@@ -61,7 +61,7 @@ jobs:
 
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
     - name: Clean VM
-      uses: asarr22/slimhub_actions@main
+      uses: Batu33TR/slimhub_actions@main
 
     - name: Install Android Building Packages
       run: curl -fsSL "https://raw.githubusercontent.com/ProjectMedusaAndroid/KernelEnvironments/ARM64/android_build_env.sh" | bash
