@@ -15,8 +15,8 @@ jobs:
     
     env:
       # Change These If You Are Forking The Repo
-      GitHubMail: "msarr3334@gmail.com"      
-      GitHubName: "asarr22"
+      GitHubMail: "batuhanarslanoglu4@gmail.com"
+      GitHubName: "Batu33TR"
       
     steps:
     - name: Creating User to Login
