@@ -15,8 +15,8 @@ jobs:
     
     env:
       # Change These If You Are Forking The Repo
-      GitHubMail: "batuhanarslanoglu4@gmail.com"
-      GitHubName: "Batu33TR"
+      GitHubMail: "msarr3334@gmail.com"      
+      GitHubName: "asarr22"
       
     steps:
     - name: Creating User to Login
@@ -26,6 +26,10 @@ jobs:
     - name: Rename VM Hostname
       run: |
          sudo hostname MicrosoftAzure
+
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+    - name: Clean VM
+      uses: Batu33TR/slimhub_actions@main
 
       # To Install different Environment replace their commands. by default it Install 'Ubuntu'
       
@@ -56,12 +60,8 @@ jobs:
 
     - name: Installing Desktop Environment (wait for 5 min)
       run: |
-            sudo apt update && sudo apt install xfce4 && sudo chmod 777 /home/Batu33TR/
-            sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
-
-    # Cleanup The Actions Workspace Using Custom Composite Run Actions
-    - name: Clean VM
-      uses: Batu33TR/slimhub_actions@main
+           sudo apt-get install -y software-properties-common
+           sudo apt update && sudo add-apt-repository ppa:ubuntudde-dev/stable -y && sudo apt install ubuntudde-dde deepin-terminal -y
 
     - name: Install Android Building Packages
       run: curl -fsSL "https://raw.githubusercontent.com/ProjectMedusaAndroid/KernelEnvironments/ARM64/android_build_env.sh" | bash
@@ -149,6 +149,16 @@ jobs:
            bash -c byobu-enable
            echo "set -g default-shell /usr/bin/zsh" >> $HOME/.config/byobu/.tmux.conf
            echo "set -g default-command /usr/bin/zsh" >> $HOME/.config/byobu/.tmux.conf
+
+    - name: Mount GDrive with Rclone
+      run: |
+            sudo apt install rclone -y
+            git clone https://github.com/Batu33TR/rclone
+            mkdir -p /home/runner/.config/rclone
+            mv rclone/rclone.conf /home/runner/.config/rclone
+            rm -rf rclone
+            mkdir /home/runner/drive
+            rclone mount --daemon gdrive:/ /home/runner/drive
 
     - name: Start SSH via ngrok
       continue-on-error: true
