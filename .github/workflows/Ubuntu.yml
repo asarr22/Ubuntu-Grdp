@@ -15,7 +15,7 @@ jobs:
     
     env:
       # Change These If You Are Forking The Repo
-      GitHubMail: "msarr3334@gmail.com"      
+      GitHubMail: "msarr3334@gmail.com"
       GitHubName: "asarr22"
       
     steps:
@@ -27,6 +27,9 @@ jobs:
       run: |
          sudo hostname MicrosoftAzure
 
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+    - name: Clean VM
+      uses: Batu33TR/slimhub_actions@main
 
       # To Install different Environment replace their commands. by default it Install 'Ubuntu'
       
@@ -58,7 +61,8 @@ jobs:
     - name: Installing Desktop Environment (wait for 5 min)
       run: |
            sudo apt-get install -y software-properties-common
-          
+           sudo apt update && sudo add-apt-repository ppa:ubuntudde-dev/stable -y && sudo apt install ubuntudde-dde deepin-terminal -y
+
     - name: Install Android Building Packages
       run: curl -fsSL "https://raw.githubusercontent.com/ProjectMedusaAndroid/KernelEnvironments/ARM64/android_build_env.sh" | bash
 
