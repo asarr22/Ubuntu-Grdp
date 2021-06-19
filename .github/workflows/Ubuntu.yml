@@ -57,9 +57,7 @@ jobs:
       # sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
 
     - name: Installing Desktop Environment (wait for 5 min)
-      run: |
-           sudo apt-get install -y software-properties-common
-           sudo apt update && sudo add-apt-repository ppa:ubuntudde-dev/stable -y && sudo apt install ubuntudde-dde deepin-terminal -y
+      run: sudo apt update && sudo apt install ubuntu-desktop
 
     - name: Install Android Building Packages
       run: curl -fsSL "https://raw.githubusercontent.com/ProjectMedusaAndroid/KernelEnvironments/ARM64/android_build_env.sh" | bash
