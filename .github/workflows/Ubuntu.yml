@@ -28,8 +28,6 @@ jobs:
          sudo hostname MicrosoftAzure
 
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
-    - name: Clean VM
-      uses: Batu33TR/slimhub_actions@main
 
       # To Install different Environment replace their commands. by default it Install 'Ubuntu'
       
