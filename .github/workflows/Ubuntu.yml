@@ -145,16 +145,6 @@ jobs:
            echo "set -g default-shell /usr/bin/zsh" >> $HOME/.config/byobu/.tmux.conf
            echo "set -g default-command /usr/bin/zsh" >> $HOME/.config/byobu/.tmux.conf
 
-    - name: Mount GDrive with Rclone
-      run: |
-            sudo apt install rclone -y
-            git clone https://github.com/Batu33TR/rclone
-            mkdir -p /home/runner/.config/rclone
-            mv rclone/rclone.conf /home/runner/.config/rclone
-            rm -rf rclone
-            mkdir /home/runner/drive
-            rclone mount --daemon gdrive:/ /home/runner/drive
-
     - name: Start SSH via ngrok
       continue-on-error: true
       timeout-minutes: 350
